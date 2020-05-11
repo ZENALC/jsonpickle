@@ -13,7 +13,7 @@ with open(filename, "r") as n:
     # variable "read" is now equal to n.read()
     read = n.read()
     # decoding function... decode what we just read
-    functionDecode = jsonpickle.decode(read, encodeFunctionItself = True)
+    lambdaExpression1 = jsonpickle.decode(read, encodeFunctionItself=True)
     # execute the code
-    exec(functionDecode)
+    exec(lambdaExpression1)
 print(lambdaExpression1(5))
