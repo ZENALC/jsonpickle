@@ -1,9 +1,5 @@
-import collections
-import inspect
 import os
 import pytest
-from pipenv.patched.prettytoml.parser.parser import value
-
 import jsonpickle
 from enum import Enum
 import json as oldJson
@@ -180,13 +176,15 @@ def test_functionDecoding():
     assert getPerimeter(2, 3) == 10
     assert getPerimeter(11, 0) == 22
 
-#second test to see if decoding function decoding works made by sikiru
-def test_fuctionDecoding2():
-    assert getArea(3,10) == 30
-    assert getArea(2, 3) == 6
-    assert getArea(4,5) != 21
 
-#Test to see if Jsonpickle decodes named tuple if name of tuple is different from variable name
+# second test to see if decoding function decoding works made by sikiru
+def test_fuctionDecoding2():
+    assert getArea(3, 10) == 30
+    assert getArea(2, 3) == 6
+    assert getArea(4, 5) != 21
+
+
+# Test to see if Jsonpickle decodes named tuple if name of tuple is different from variable name
 def test_namedTuple():
     from collections import namedtuple
     student = namedtuple("student", 'name age color')
@@ -196,14 +194,14 @@ def test_namedTuple():
     decode = jsonpickle.decode(enc)
     print(type(Sikiru))
     for k, v in list(globals().items()):
-     if type(Sikiru) == v:
+        if type(Sikiru) == v:
             print(k, v)
     student1 = student(name='Mihir', age=21, color='brown')
     student2 = student("sikiru", 21, "black")
-    assert (type( jsonpickle.decode( jsonpickle.encode( Sikiru ) ) ) != type( Sikiru ))
+    assert (type(jsonpickle.decode(jsonpickle.encode(Sikiru))) != type(Sikiru))
 
 
-#second test to see if Null fields works in JSON representations made by sikiru
+# second test to see if Null fields works in JSON representations made by sikiru
 def test_removeNullFields():
     Name = Dummy("Sikiru")
     Name.age = 21
@@ -221,14 +219,11 @@ def test_removeNullFields():
 
     enc = jsonpickle.encode(Name)
 
-    
     for attr in allAttributes:
         assert attr in enc
 
-    
     withoutNullEncoded = jsonpickle.encode(Name, nullValues=False)
 
-    
     for attr in allAttributes:
         if attr in nullAttributes:
             assert attr not in withoutNullEncoded
