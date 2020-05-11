@@ -12,7 +12,7 @@ class Type(Enum):
 
 
 # Class to test Enum issue with
-class TestEnumObject:
+class EnumObject:
     def __init__(self, num, objectType):
         self.num = num
         self.type = objectType
@@ -85,10 +85,10 @@ def test_dictionaryIdentity():
 
 # Test to see if enum issue has been resolved or not
 def test_enumIssue():
-    a = TestEnumObject(1, Type.ONE)
-    b = TestEnumObject(2, Type.ONE)
-    c = TestEnumObject(3, Type.TWO)
-    d = TestEnumObject(1, Type.ONE)
+    a = EnumObject(1, Type.ONE)
+    b = EnumObject(2, Type.ONE)
+    c = EnumObject(3, Type.TWO)
+    d = EnumObject(1, Type.ONE)
 
     # Different enum values, so they both should not equal each other
     differentEnums = [a, c]
