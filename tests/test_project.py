@@ -163,7 +163,7 @@ if not os.path.exists("test.json"):
         f.write(oldJson.dumps({"py/function": "__main__.getPerimeter", "functionCode": "def getPerimeter(length, "
                                                                                        "width):\n    return 2 * ("
                                                                                        "length + width)\n\n"}))
-# Read json file, decode function, then execute it.         
+# Read json file, decode function, then execute it.
 if os.path.exists("test.json"):
     with open("test.json", 'r') as f:
         jsonRead = f.read()
