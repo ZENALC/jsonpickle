@@ -187,10 +187,10 @@ lambdaEncode = jsonpickle.encode(lambdaExp, encodeFunctionItself=True)
 del lambdaExp
 
 # decode Fix class
-lambdaDecode = jsonpickle.decode(lambdaEncode, encodeFunctionItself=True)
+lambdaExp = jsonpickle.decode(lambdaEncode, encodeFunctionItself=True)
 
 # exec
-exec(lambdaDecode)
+exec(lambdaExp)
 
 
 # marie clancy: test if the lambda issue has been fixed
