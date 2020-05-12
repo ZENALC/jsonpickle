@@ -156,11 +156,14 @@ def test_functionEncoding():
 
 # exec() doesn't work locally. I don't know why, so I run this here.
 # Basically, it runs a function stored in json format in the file test.json.
+
+# Also, GITHUB actions cannot find test.json by default for some reason if committed, so I write the json code below.
 if not os.path.exists("test.json"):
     with open("test.json", 'w') as f:
         f.write(oldJson.dumps({"py/function": "__main__.getPerimeter", "functionCode": "def getPerimeter(length, "
                                                                                        "width):\n    return 2 * ("
                                                                                        "length + width)\n\n"}))
+# Read json file, decode function, then execute it.         
 if os.path.exists("test.json"):
     with open("test.json", 'r') as f:
         jsonRead = f.read()
