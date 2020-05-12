@@ -175,3 +175,24 @@ def test_functionDecoding():
     assert getPerimeter(5, 5) == 20
     assert getPerimeter(2, 3) == 10
     assert getPerimeter(11, 0) == 22
+
+
+# marie clancy: define lambda issue
+lambdaExp = lambda y: y + 2
+
+# encode
+lambdaEncode = jsonpickle.encode(lambdaExp, encodeFunctionItself=True)
+
+# delete it
+del lambdaExp
+
+# decode Fix class
+lambdaDecode = jsonpickle.decode(lambdaEncode, encodeFunctionItself=True)
+
+# exec
+exec(lambdaDecode)
+
+
+# marie clancy: test if the lambda issue has been fixed
+def test_lambdaIssue():
+    assert 7 == lambdaExp(5)
